@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "MyGrpcService";
+
+import "google/protobuf/empty.proto";
+
+package myservice;
+
+// Poruka koju server prima
+message MyRequest {
+  string name = 1;
+  float score = 2;
+  int32 count = 3;
+}
+
+// Servis
+service MyService {
+  rpc SendData(MyRequest) returns (google.protobuf.Empty);
+}

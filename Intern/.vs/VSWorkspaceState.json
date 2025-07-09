@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\GrpcClient",
+    "\\GrpcClient\\Protos",
+    "\\GrpcServer",
+    "\\GrpcServer\\Protos",
+    "\\GrpcServer\\Services"
+  ],
+  "SelectedNode": "\\GrpcServer\\Services\\GreeterService.cs",
+  "PreviewInSolutionExplorer": false
+}
