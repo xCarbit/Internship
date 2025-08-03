@@ -8,12 +8,18 @@ package myservice;
 
 // Poruka koju server prima
 message MyRequest {
-  string name = 1;
-  float score = 2;
-  int32 count = 3;
+  int32 SensorId = 1;
+  string SensorKind=2;
+  double Value = 3;
+  string Time=4;
+}
+
+message serverResponse {
+        string message=1;
+
 }
 
 // Servis
 service MyService {
-  rpc SendData(MyRequest) returns (google.protobuf.Empty);
+  rpc SendData(MyRequest) returns (serverResponse);
 }
