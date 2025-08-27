@@ -14,8 +14,11 @@ class Program
     static int sensorId;
     static string tipSenzora;
     static Grpc.Net.Client.GrpcChannel channel;
-   
-    
+    static string pattern;
+    static int currPeriod=0;  
+    static double addVal=0;
+  
+
     static async Task Main(string[] args)
     {
         try
@@ -28,6 +31,10 @@ class Program
            
             while (true)
             {
+               Console.Write("Unesite tip patterna (Random | Ramp): ");
+               pattern=Console.ReadLine();
+
+
                Console.Write("Unesite tip senzora (TEMPERATURA | PRITISAK): ");
 
               
@@ -42,7 +49,7 @@ class Program
                 sensorId=int.Parse(Console.ReadLine());
 
                if(tipSenzora=="TEMPERATURA") {
-                Console.Write("Unesite minumalnu vrednost koju senzor moze ocitati (u °C): ");
+                Console.Write("Unesite minimalnu vrednost koju senzor moze ocitati (u °C): ");
                 minVal = int.Parse(Console.ReadLine());
                 Console.Write("Unesite maksimalnu vrednost koju senzor moze ocitati (u °C): ");
                 maxVal = int.Parse(Console.ReadLine());
@@ -58,6 +65,7 @@ class Program
                 Console.Write("Unesite vremenski interval izmedju dva timestampa (u milisekundama): ");
                 int timeStampDistance = int.Parse(Console.ReadLine());
                
+               addVal=(maxVal-minVal)*1.0/100;
 
                timer = new System.Timers.Timer(timeStampDistance); 
                timer.Elapsed += OnTimedEvent;
@@ -81,22 +89,32 @@ class Program
 
     static async void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
-        double val=0; 
-        if(tipSenzora=="Temperatura [°C]") { 
-            val=new Random().Next(minVal,maxVal);
+        double val=0;
+        if(pattern=="Ramp")
+        {
+            
+            val=minVal+currPeriod*addVal;
+            currPeriod=currPeriod+1;
+            if(currPeriod==100)currPeriod=0;
         }
+        else {
+       
+        if(tipSenzora=="Temperatura [°C]") { 
+            val=random.Next(minVal,maxVal);
+        }
+
            
         else  {val=minVal + random.NextDouble()*(maxVal-minVal); val=Math.Round(val,2);}
+        }
         Console.WriteLine(val);
         DateTime originalTime = DateTime.Now;      
-        DateTime adjustedTime = originalTime.AddHours(2);
         var request = new MyRequest
                 {
                     SensorId = sensorId,
                     SensorKind = tipSenzora, 
                     Value = val,
-                    Time = adjustedTime.ToString("o")
-
+                    Time = originalTime.ToString("o"),
+                   
                 };
 
                  var client = new MyService.MyServiceClient(channel);
@@ -104,6 +122,6 @@ class Program
                var response = await client.SendDataAsync(request);
 
                Console.WriteLine($"[KLIJENT] Odgovor servera: {response.Message}");
-
+        
     }
 }

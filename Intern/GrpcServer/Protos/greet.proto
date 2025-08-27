@@ -7,18 +7,47 @@ import "google/protobuf/empty.proto";
 package myservice;
 
 // Poruka koju server prima
-message MyRequest {
+message MyRequest1 {
   int32 SensorId = 1;
   string SensorKind= 2;
   double Value = 3;
   string Time=4;
+  int32 type=5;
 }
 
-message MyResponse {
+message MyResponse1 {
   string message=1;
+}
+
+message MyRequest2 {
+  int32 SensorId = 1;
+  string FromTime  = 2;
+  string ToTime= 3;
+}
+
+message MyRequestOne {
+  int32 SensorId = 1;
+  string FromTime  = 2;
+  string ToTime= 3;
+  double RefValue= 4;
+}
+
+message MyData {
+  string Id = 1;
+  int32 SensorId = 2;
+  string SensorKind =3;
+  string TimeStamp = 4;
+  double Value = 5;
+}
+
+// odgovor servera
+message MyResponse2 {
+  repeated MyData data = 1; // <--- ovo je lista MyData koju koristiš u AddRange
 }
 
 // Servis
 service MyService {
-  rpc SendData(MyRequest) returns (MyResponse);
+  rpc SendData(MyRequest1) returns (MyResponse1);
+  rpc GetDataIdParticularPeriod(MyRequest2) returns (MyResponse2);
+  rpc GetDataIdParticularPeriodRefValue(MyRequestOne) returns (MyResponse2);
 }

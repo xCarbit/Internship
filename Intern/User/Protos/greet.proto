@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option csharp_namespace = "MyGrpcService";
+
+import "google/protobuf/empty.proto";
+
+package myservice;
+
+// Poruka koju server prima
+message MyRequest {
+  int32 SensorId = 1;
+  string TimeFrom=2;
+  string TimeTo=3;
+  
+}
+
+message MyRequest1 {
+  int32 SensorId = 1;
+  string TimeFrom=2;
+  string TimeTo=3;
+  double RefValue=4;
+}
+
+
+message Data {
+  string Id = 1;
+  int32 SensorId = 2;
+  string SensorKind = 3;
+  string TimeStamp = 4;
+  double Value = 5;
+}
+
+// odgovor servera
+message serverResponse {
+  repeated Data data = 1; // <--- ovo je lista MyData koju koristiš u AddRange
+}
+
+// Servis
+service MyService {
+  rpc GetDataIdParticularPeriod(MyRequest) returns (serverResponse);
+  rpc GetDataIdParticularPeriodRefValue(MyRequest1) returns (serverResponse);
+}

@@ -49,17 +49,39 @@ namespace MyGrpcService {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::MyGrpcService.MyRequest> __Marshaller_myservice_MyRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyRequest.Parser));
+    static readonly grpc::Marshaller<global::MyGrpcService.MyRequest1> __Marshaller_myservice_MyRequest1 = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyRequest1.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::MyGrpcService.MyResponse> __Marshaller_myservice_MyResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyResponse.Parser));
+    static readonly grpc::Marshaller<global::MyGrpcService.MyResponse1> __Marshaller_myservice_MyResponse1 = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyResponse1.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::MyGrpcService.MyRequest2> __Marshaller_myservice_MyRequest2 = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyRequest2.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::MyGrpcService.MyResponse2> __Marshaller_myservice_MyResponse2 = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyResponse2.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::MyGrpcService.MyRequestOne> __Marshaller_myservice_MyRequestOne = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyRequestOne.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::MyGrpcService.MyRequest, global::MyGrpcService.MyResponse> __Method_SendData = new grpc::Method<global::MyGrpcService.MyRequest, global::MyGrpcService.MyResponse>(
+    static readonly grpc::Method<global::MyGrpcService.MyRequest1, global::MyGrpcService.MyResponse1> __Method_SendData = new grpc::Method<global::MyGrpcService.MyRequest1, global::MyGrpcService.MyResponse1>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SendData",
-        __Marshaller_myservice_MyRequest,
-        __Marshaller_myservice_MyResponse);
+        __Marshaller_myservice_MyRequest1,
+        __Marshaller_myservice_MyResponse1);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::MyGrpcService.MyRequest2, global::MyGrpcService.MyResponse2> __Method_GetDataIdParticularPeriod = new grpc::Method<global::MyGrpcService.MyRequest2, global::MyGrpcService.MyResponse2>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetDataIdParticularPeriod",
+        __Marshaller_myservice_MyRequest2,
+        __Marshaller_myservice_MyResponse2);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::MyGrpcService.MyRequestOne, global::MyGrpcService.MyResponse2> __Method_GetDataIdParticularPeriodRefValue = new grpc::Method<global::MyGrpcService.MyRequestOne, global::MyGrpcService.MyResponse2>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetDataIdParticularPeriodRefValue",
+        __Marshaller_myservice_MyRequestOne,
+        __Marshaller_myservice_MyResponse2);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -72,7 +94,19 @@ namespace MyGrpcService {
     public abstract partial class MyServiceBase
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::MyGrpcService.MyResponse> SendData(global::MyGrpcService.MyRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::MyGrpcService.MyResponse1> SendData(global::MyGrpcService.MyRequest1 request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::MyGrpcService.MyResponse2> GetDataIdParticularPeriod(global::MyGrpcService.MyRequest2 request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::MyGrpcService.MyResponse2> GetDataIdParticularPeriodRefValue(global::MyGrpcService.MyRequestOne request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -85,7 +119,9 @@ namespace MyGrpcService {
     public static grpc::ServerServiceDefinition BindService(MyServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_SendData, serviceImpl.SendData).Build();
+          .AddMethod(__Method_SendData, serviceImpl.SendData)
+          .AddMethod(__Method_GetDataIdParticularPeriod, serviceImpl.GetDataIdParticularPeriod)
+          .AddMethod(__Method_GetDataIdParticularPeriodRefValue, serviceImpl.GetDataIdParticularPeriodRefValue).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -95,7 +131,9 @@ namespace MyGrpcService {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, MyServiceBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_SendData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MyGrpcService.MyRequest, global::MyGrpcService.MyResponse>(serviceImpl.SendData));
+      serviceBinder.AddMethod(__Method_SendData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MyGrpcService.MyRequest1, global::MyGrpcService.MyResponse1>(serviceImpl.SendData));
+      serviceBinder.AddMethod(__Method_GetDataIdParticularPeriod, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MyGrpcService.MyRequest2, global::MyGrpcService.MyResponse2>(serviceImpl.GetDataIdParticularPeriod));
+      serviceBinder.AddMethod(__Method_GetDataIdParticularPeriodRefValue, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MyGrpcService.MyRequestOne, global::MyGrpcService.MyResponse2>(serviceImpl.GetDataIdParticularPeriodRefValue));
     }
 
   }

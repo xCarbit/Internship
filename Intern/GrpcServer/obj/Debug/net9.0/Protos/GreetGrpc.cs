@@ -7,13 +7,13 @@
 
 using grpc = global::Grpc.Core;
 
-namespace GrpcServer {
+namespace MyGrpcService {
   /// <summary>
-  /// The greeting service definition.
+  /// Servis
   /// </summary>
-  public static partial class Greeter
+  public static partial class MyService
   {
-    static readonly string __ServiceName = "greet.Greeter";
+    static readonly string __ServiceName = "myservice.MyService";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -49,36 +49,64 @@ namespace GrpcServer {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::GrpcServer.HelloRequest> __Marshaller_greet_HelloRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcServer.HelloRequest.Parser));
+    static readonly grpc::Marshaller<global::MyGrpcService.MyRequest1> __Marshaller_myservice_MyRequest1 = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyRequest1.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::GrpcServer.HelloReply> __Marshaller_greet_HelloReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcServer.HelloReply.Parser));
+    static readonly grpc::Marshaller<global::MyGrpcService.MyResponse1> __Marshaller_myservice_MyResponse1 = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyResponse1.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::MyGrpcService.MyRequest2> __Marshaller_myservice_MyRequest2 = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyRequest2.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::MyGrpcService.MyResponse2> __Marshaller_myservice_MyResponse2 = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyResponse2.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::MyGrpcService.MyRequestOne> __Marshaller_myservice_MyRequestOne = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::MyGrpcService.MyRequestOne.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::GrpcServer.HelloRequest, global::GrpcServer.HelloReply> __Method_SayHello = new grpc::Method<global::GrpcServer.HelloRequest, global::GrpcServer.HelloReply>(
+    static readonly grpc::Method<global::MyGrpcService.MyRequest1, global::MyGrpcService.MyResponse1> __Method_SendData = new grpc::Method<global::MyGrpcService.MyRequest1, global::MyGrpcService.MyResponse1>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "SayHello",
-        __Marshaller_greet_HelloRequest,
-        __Marshaller_greet_HelloReply);
+        "SendData",
+        __Marshaller_myservice_MyRequest1,
+        __Marshaller_myservice_MyResponse1);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::MyGrpcService.MyRequest2, global::MyGrpcService.MyResponse2> __Method_GetDataIdParticularPeriod = new grpc::Method<global::MyGrpcService.MyRequest2, global::MyGrpcService.MyResponse2>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetDataIdParticularPeriod",
+        __Marshaller_myservice_MyRequest2,
+        __Marshaller_myservice_MyResponse2);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::MyGrpcService.MyRequestOne, global::MyGrpcService.MyResponse2> __Method_GetDataIdParticularPeriodRefValue = new grpc::Method<global::MyGrpcService.MyRequestOne, global::MyGrpcService.MyResponse2>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetDataIdParticularPeriodRefValue",
+        __Marshaller_myservice_MyRequestOne,
+        __Marshaller_myservice_MyResponse2);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::GrpcServer.GreetReflection.Descriptor.Services[0]; }
+      get { return global::MyGrpcService.GreetReflection.Descriptor.Services[0]; }
     }
 
-    /// <summary>Base class for server-side implementations of Greeter</summary>
-    [grpc::BindServiceMethod(typeof(Greeter), "BindService")]
-    public abstract partial class GreeterBase
+    /// <summary>Base class for server-side implementations of MyService</summary>
+    [grpc::BindServiceMethod(typeof(MyService), "BindService")]
+    public abstract partial class MyServiceBase
     {
-      /// <summary>
-      /// Sends a greeting
-      /// </summary>
-      /// <param name="request">The request received from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::GrpcServer.HelloReply> SayHello(global::GrpcServer.HelloRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::MyGrpcService.MyResponse1> SendData(global::MyGrpcService.MyRequest1 request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::MyGrpcService.MyResponse2> GetDataIdParticularPeriod(global::MyGrpcService.MyRequest2 request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::MyGrpcService.MyResponse2> GetDataIdParticularPeriodRefValue(global::MyGrpcService.MyRequestOne request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -88,10 +116,12 @@ namespace GrpcServer {
     /// <summary>Creates service definition that can be registered with a server</summary>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public static grpc::ServerServiceDefinition BindService(GreeterBase serviceImpl)
+    public static grpc::ServerServiceDefinition BindService(MyServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_SayHello, serviceImpl.SayHello).Build();
+          .AddMethod(__Method_SendData, serviceImpl.SendData)
+          .AddMethod(__Method_GetDataIdParticularPeriod, serviceImpl.GetDataIdParticularPeriod)
+          .AddMethod(__Method_GetDataIdParticularPeriodRefValue, serviceImpl.GetDataIdParticularPeriodRefValue).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -99,9 +129,11 @@ namespace GrpcServer {
     /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public static void BindService(grpc::ServiceBinderBase serviceBinder, GreeterBase serviceImpl)
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, MyServiceBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_SayHello, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcServer.HelloRequest, global::GrpcServer.HelloReply>(serviceImpl.SayHello));
+      serviceBinder.AddMethod(__Method_SendData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MyGrpcService.MyRequest1, global::MyGrpcService.MyResponse1>(serviceImpl.SendData));
+      serviceBinder.AddMethod(__Method_GetDataIdParticularPeriod, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MyGrpcService.MyRequest2, global::MyGrpcService.MyResponse2>(serviceImpl.GetDataIdParticularPeriod));
+      serviceBinder.AddMethod(__Method_GetDataIdParticularPeriodRefValue, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::MyGrpcService.MyRequestOne, global::MyGrpcService.MyResponse2>(serviceImpl.GetDataIdParticularPeriodRefValue));
     }
 
   }

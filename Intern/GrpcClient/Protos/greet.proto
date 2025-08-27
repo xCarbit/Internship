@@ -12,6 +12,7 @@ message MyRequest {
   string SensorKind=2;
   double Value = 3;
   string Time=4;
+  
 }
 
 message serverResponse {
